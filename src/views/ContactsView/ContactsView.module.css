@@ -1,22 +1,9 @@
 .loader {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: #3f51b5;
 }
 
-.main_title {
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 1.167;
-  text-align: center;
-  letter-spacing: 0.03em;
-  margin-bottom: 50px;
-}
-
-.secondary_title {
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.143;
-  text-align: center;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+.wrapper {
+  padding-top: 100px;
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import { getAllContacts } from '../../redux/contacts/contacts-selectors';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import styles from './ContactForm.module.css';
 
 class ContactForm extends Component {
@@ -35,11 +37,10 @@ class ContactForm extends Component {
     render () {
         return (
             <form className={styles.form} onSubmit={this.handleSubmit}>
-                <label className={styles.field}>
-                    name
-                </label>
-                <input
+
+                <TextField
                     className={styles.input}
+                    label='name'
                     type="text"
                     name="name"
                     pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -48,11 +49,10 @@ class ContactForm extends Component {
                     value={this.state.name}
                     onChange={this.handleChangeName}
                 />
-                <label className={styles.field}>
-                    number
-                </label>
-                <input
+
+                <TextField
                     className={styles.input}
+                    label='number'
                     type="tel"
                     name="number"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -61,9 +61,13 @@ class ContactForm extends Component {
                     value={this.state.number}
                     onChange={this.handleChangeNumber}
                 />
-                <button className={styles.button} type="submit">
-                    add contact
-                </button>
+
+                <Button
+                    className={styles.button}
+                    type="submit"
+                    variant="contained"
+                    color="primary">add contact</Button>
+                
             </form>
         )
     };

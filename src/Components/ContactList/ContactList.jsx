@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import contactsOperations from '../../redux/contacts/contacts-operations';
 import { getVisibleContacts } from '../../redux/contacts/contacts-selectors';
+import Button from '@material-ui/core/Button';
 import styles from './ContactList.module.css'
 
 const ContactList = ({ contacts, onDeleteContact }) => {
@@ -10,7 +11,12 @@ const ContactList = ({ contacts, onDeleteContact }) => {
             {
                 contacts.map(({ id, name, number }) =>
                     <li className={styles.item} key={id}>{name}: {number}
-                        <button className={styles.button} type='button' onClick={() => onDeleteContact(id)}>Delete</button>
+                        <Button
+                            className={styles.button}
+                            type="button"
+                            onClick={() => onDeleteContact(id)}
+                            variant="contained"
+                            color="primary">Delete</Button>
                     </li>
                 )
             }

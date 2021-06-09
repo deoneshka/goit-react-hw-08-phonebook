@@ -1,7 +1,6 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Container from './Components/Container';
 import routes from './routes';
 import AppBar from './Components/AppBar';
 import authOperations from './redux/auth/auth-operations';
@@ -20,7 +19,7 @@ class App extends Component {
 
     render() {
         return (
-            <Container>
+            <>
                 <AppBar />
                 <Suspense fallback={<p>Loading...</p>}>
                     <Switch>
@@ -45,7 +44,7 @@ class App extends Component {
                         <Redirect to={routes.home} />
                     </Switch>
                 </Suspense>
-            </Container>
+            </>
         );
     };
 };
