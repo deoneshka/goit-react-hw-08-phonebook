@@ -13,106 +13,111 @@ import authOperations from '../../redux/auth/auth-operations';
 import styles from './RegisterView.module.css';
 import Box from '@material-ui/core/Box';
 
-
 class RegisterView extends Component {
-    state = {
-        name: '',
-        email: '',
-        password: '',
-        showPassword: false
-    };
+  state = {
+    name: '',
+    email: '',
+    password: '',
+    showPassword: false,
+  };
 
-    handleChange = ({ target: { name, value } }) => {
-        this.setState({ [name]: value });
-    };
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
-    handleSubmit = e => {
-        e.preventDefault();
+  handleSubmit = e => {
+    e.preventDefault();
 
-        this.props.onRegister(this.state);
-        this.setState({ name: '', email: '', password: '' });
-    };
+    this.props.onRegister(this.state);
+    this.setState({ name: '', email: '', password: '' });
+  };
 
-    handleClickShowPassword = () => {
-         this.setState({ showPassword: !this.state.showPassword });
-    };
+  handleClickShowPassword = () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
 
-    handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+  handleMouseDownPassword = event => {
+    event.preventDefault();
+  };
 
-    render() {
-        const { name, email, password, showPassword } = this.state;
+  render() {
+    const { name, email, password, showPassword } = this.state;
 
-        return (
-            <div className={styles.wrapper}>
-                <form
-                    className={styles.form}
-                    onSubmit={this.handleSubmit}
-                    autoComplete="off"
-                >
-                    <Box className={styles.wrapper__input}>
-                        <TextField
-                            className={styles.input}
-                            label="name"
-                            type="text"
-                            name="name"
-                            value={name}
-                            onChange={this.handleChange}
-                            variant="outlined"
-                        />
-                    </Box>
+    return (
+      <div className={styles.wrapper}>
+        <form
+          className={styles.form}
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+        >
+          <Box className={styles.wrapper__input}>
+            <TextField
+              className={styles.input}
+              label="name"
+              type="text"
+              name="name"
+              value={name}
+              onChange={this.handleChange}
+              variant="outlined"
+            />
+          </Box>
 
-                    <Box className={styles.wrapper__input}>
-                        <TextField
-                            className={styles.input}
-                            label="email"
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={this.handleChange}
-                            variant="outlined"
-                        />
-                    </Box>
-                    
-                    <Box className={styles.wrapper__input}>
-                        <FormControl variant="outlined" className={styles.input}>
-                            <InputLabel htmlFor="outlined-adornment-password">password</InputLabel>
-                            <OutlinedInput
-                                id="outlined-adornment-password"
-                                type={showPassword ? 'text' : 'password'}
-                                name="password"
-                                value={password}
-                                onChange={this.handleChange}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={this.handleClickShowPassword}
-                                            onMouseDown={this.handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {
-                                                password ? <Visibility /> : <VisibilityOff />
-                                            }
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                labelWidth={70}
-                            />
-                        </FormControl>
-                    </Box>
-                    
-                    <Button className={styles.button} type="submit" variant="contained" color="primary">register now</Button>
-                </form>
-            </div>
-        );
-    };
-};
+          <Box className={styles.wrapper__input}>
+            <TextField
+              className={styles.input}
+              label="email"
+              type="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+              variant="outlined"
+            />
+          </Box>
+
+          <Box className={styles.wrapper__input}>
+            <FormControl variant="outlined" className={styles.input}>
+              <InputLabel htmlFor="outlined-adornment-password">
+                password
+              </InputLabel>
+              <OutlinedInput
+                id="outlined-adornment-password"
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={this.handleClickShowPassword}
+                      onMouseDown={this.handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                labelWidth={70}
+              />
+            </FormControl>
+          </Box>
+
+          <Button
+            className={styles.button}
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
+            register now
+          </Button>
+        </form>
+      </div>
+    );
+  }
+}
 
 const mapDispatchToProps = {
-    onRegister: authOperations.register,
+  onRegister: authOperations.register,
 };
 
 export default connect(null, mapDispatchToProps)(RegisterView);
-

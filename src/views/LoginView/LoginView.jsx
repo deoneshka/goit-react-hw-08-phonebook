@@ -81,7 +81,7 @@ class LoginView extends Component {
                                             edge="end"
                                         >
                                             {
-                                                password ? <Visibility /> : <VisibilityOff />
+                                                showPassword ? <Visibility /> : <VisibilityOff />
                                             }
                                         </IconButton>
                                     </InputAdornment>
